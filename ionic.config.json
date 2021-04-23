@@ -1,0 +1,8 @@
+{
+  "name": "Steganography",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "006e2951"
+}
