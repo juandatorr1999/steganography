@@ -14,23 +14,23 @@
   </ion-header>
 
   <ion-grid>
-    <ion-row>
-      <ion-col text-center>
-        <h3>Image Picker</h3>
+    <ion-row class="ion-align-items-center">
+      <ion-col class="ion-text-center">
+        <ion-text><h5>This app encrypts through a method called steganography, choose an image where you want to hide the text and click encrypt below the image once you select it.</h5></ion-text>
+
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        <ion-button (click)="getImages()">Choose Images</ion-button>
+    <ion-row class="ion-align-items-center">
+      <ion-col class="ion-text-center">
+        <ion-button (click)="getImage()">Choose Image</ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
+
+    <ion-row class="ion-align-items-center">
+      <ion-col class="ion-text-center">
         <!-- More Pinterest floating gallery style -->
         <div class="images">
-          <div class="one-image" *ngFor="let img of imageResponse">
-            <img src="{{img}}" alt="" srcset="">
-          </div>
+            <img src="{{imageResponse}}" alt="" srcset="">
         </div>
       </ion-col>
     </ion-row>
