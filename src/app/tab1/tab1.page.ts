@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FileSharer } from '@byteowls/capacitor-filesharer';
+import { Plugins, registerWebPlugin } from '@capacitor/core';
 
 import {ImagePicker} from '@ionic-native/image-picker/ngx'
 
@@ -13,7 +15,22 @@ export class Tab1Page {
   options: any;
 
   constructor(private imagePicker: ImagePicker) { }
+  ngOnInit() {
+    console.log("Register custom capacitor plugins");
+    registerWebPlugin(FileSharer);
+  }
 
+  saveGallery(){
+    Plugins.FileSharer.share({
+      filename: "test12.png",
+      base64Data: this.imageResponse.replace('data:image/png;base64,', '').toString(),
+      contentType: "image/png",
+  }).then(() => {
+      console.log("shared!!!");
+  }).catch(error => {
+      console.error("File sharing failed", error.message);
+  });
+  }
   
   public getImage(){
     this.options = {
@@ -41,7 +58,7 @@ export class Tab1Page {
     
     this.imagePicker.getPictures(this.options).then((results) => {
       
-        this.imageResponse = ('data:image/jpeg;base64,' + results[0]);
+        this.imageResponse = ('data:image/png;base64,' + results[0]);
       
     }, (err) => { 
       alert(err);
