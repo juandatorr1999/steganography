@@ -1,6 +1,6 @@
 # Stegasnography Security Project
 
-How to run the program:
+Steps to prepare the program to run:
 ```
 npm install
 

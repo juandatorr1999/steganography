@@ -25,34 +25,43 @@
         <ion-button (click)="getImage()">Choose Image</ion-button>
       </ion-col>
     </ion-row>
-
+    
     <ion-row class="ion-align-items-center">
       <ion-col class="ion-text-center">
         <!-- More Pinterest floating gallery style -->
-        <div class="images">
-            <img src="{{imageResponse}}" alt="" srcset="">
+        <div >
+            <img id="myImgP" height ="300" src="{{imageResponse}}" >
         </div>
       </ion-col>
     </ion-row>
-    <div *ngIf = "imageResponse">
+   
+    <ion-row class="ion-align-items-center">
+      <ion-col class="ion-text-center">
+        <canvas id = "myCanvas"> </canvas>
+      </ion-col>
+    </ion-row>
+    
+
+    <div *ngIf = "msg">
       <ion-row class = "ion-align-items-center">
         <ion-col class="ion-text-center">
-          <ion-item>
-            <ion-label position="floating">Enter the message you want to encrypt!</ion-label>
-            <ion-textarea></ion-textarea>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <br><br>
-      <ion-row class = "ion-align-items-center">
-        <ion-col class="ion-text-center">
-          <ion-button (click)="saveGallery()">Encrypt
-            <ion-icon name = "lock-closed-outline" slot="end"></ion-icon>
+          <ion-button size="large" (click)="encryptImage()">Encrypt
+            <ion-icon  name = "lock-closed-outline" slot="end"></ion-icon>
           </ion-button>
         </ion-col>
       </ion-row>
     </div>
 
+    <div *ngIf = "imageResponse">
+      <ion-row class = "ion-align-items-center">
+        <ion-col class="ion-text-center">
+          <ion-item>
+            <ion-label position="floating">Enter the message you want to encrypt!</ion-label>
+            <ion-textarea [(ngModel)]="msg"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
   </ion-grid>
-  <br> <br>
 </ion-content>
