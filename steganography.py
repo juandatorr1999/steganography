@@ -37,3 +37,23 @@ def hideInfo(filename, message):
         img = img.convert('RGBA')
         datas = img.getdata()
 
+        newData = []
+        digit = 0
+        temp = ''
+        for item in datas:
+            if(digit < len(binary)):
+                newPix = encode(rgb2hex(item[0],item[1],item[2]),binary[digit])
+                if(newPix == None):
+                    newData.append(item)
+                else:
+                    r, g, b= hex2rgb(newPix)
+                    newData.append((r,g,b,255))
+                    digit += 1
+            else:
+                newData.append(item)
+        img.putdata(newData)
+        img.save(filename, "PNG")
+        return "Completed!"
+    return "Incorret image mode, couldn't encode"
+    
+
